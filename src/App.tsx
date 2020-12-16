@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { db } from "./firebase";
-import { FormControl, TextField } from "@material-ui/core";
+import { FormControl, TextField, List } from "@material-ui/core";
 import AddToPhotosIcon from "@material-ui/icons/AddToPhotos";
+import SubsucItem from "./SubsucItem";
+// import { FlightTakeoffSharp } from '@material-ui/icons';
+// import { getAllJSDocTagsOfKind } from 'typescript';
+import Total from './Total';
+import './style.module.scss';
 
 
 const App: React.FC = () => {
@@ -57,6 +62,12 @@ const App: React.FC = () => {
       {subsucs.map((subsuc)=>
       <h4 key={subsuc.id}>{subsuc.price}</h4>
       )}
+      <List>
+      {subsucs.map((subsuc)=>(
+        <SubsucItem key={subsuc.id} id={subsuc.id} title={subsuc.title} price={subsuc.price} />
+      ))}
+      </List>
+      <Total />
     </div>
   );
 };
